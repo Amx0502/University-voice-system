@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>大学之声系统</title>
+        <link rel="stylesheet" href="./public/css/house.css" />
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div class="comment_info1">
+                <a class="login" href="index.php?p=admin">管理员登录</a>
+                <a class="login" href="index.php?p=user&c=user&a=logout">退出登录</a>
+                <a class="login" href="index.php?p=user&c=user&a=register">注册用户</a>
+                <h1>大学之声系统</h1>
+            </div>
+            <div class="postbox">
+                <form method="post" action="index.php?p=home&c=comment&a=add">
+                    <ul class="userbox">
+                        <li>姓名:</li>
+                        <li class="user_name">
+                            <input type="text" name="poster">
+                        </li>
+                        <li>邮箱:</li>
+                        <li class="user_email">
+                            <input type="text" name="mail">
+                        </li>
+                        <li class="lock">
+                            <input type="checkbox" name="is_private" value="1">
+                        </li>
+                        <li><label for="is_private">🔒私密</label></li>
+                        <li class="user_post">
+                            <input class="post_button" value="发布" type="submit">
+                        </li>
+                    </ul>
+                    <textarea name="comment" placeholder="在此输入留言" required></textarea>
+                </form>
+            </div>
+            <div class="comment_info">
+                留言数:<?php echo $num;?>
+                <span class="sort">排序方式:
+                    <a href="index.php" <?php if(!isset($_GET['sort'])) echo 'class="curr"';?>>正序</a>
+                    <a href="index.php?sort=desc"
+                        <?php if(isset($_GET['sort']) && $_GET['sort']=='desc') echo 'class="curr"';?>>倒序</a>
+                </span>
+            </div>
+            <ul class="comments">
+                <?php foreach ($data as $v): ?>
+                <?php if ($v['is_private'] != 1): ?> <!-- 检查is_private是否不等于1 -->
+                <li>
+                    <p>用户名: <?php echo htmlspecialchars($v['poster']); ?></p>
+                    <p><?php echo htmlspecialchars($v['comment']); ?></p>
+                    <p>发表时间: <?php echo htmlspecialchars($v['date']); ?></p>
+                    <div class="comment_info">
+                        <span class="sort">
+                            <a
+                                href="index.php?p=user&c=user&a=report&id=<?php echo htmlspecialchars($v['id']); ?>">🚫举报</a>
+                            <?php echo htmlspecialchars($v['id']); ?>楼
+                            <a href="index.php?p=user&c=user&a=likes&id=<?php echo htmlspecialchars($v['id']); ?>">👍点赞:
+                                <?php echo htmlspecialchars($v['likes']); ?></a>
+                            <a href="index.php?p=user&c=user&a=stepon&id=<?php echo htmlspecialchars($v['id']); ?>">👎踩:
+                                <?php echo htmlspecialchars($v['step_on']); ?></a>
+                        </span>
+                    </div>
+                    <?php if ($v['reply'] !== ''): ?>
+                    <ul class="comment_reply">
+                        <li>
+                            <p>管理员回复:</p>
+                            <p><?php echo htmlspecialchars($v['reply']); ?></p>
+                            <?php if ($v['reply2'] != ''): ?>
+                            <p>用户回复:</p>
+                            <p><?php echo htmlspecialchars($v['reply2']); ?></p>
+                            <?php endif; ?>
+                        </li>
+                        <div class="comment_info">
+                            <span class="sort1" style="float: right;">
+                                <a onclick="fun1(this)">回复</a>
+                                <form class="relpy" style="display: none;float: left;" method="post"
+                                    action="index.php?p=home&c=comment&a=add1&id=<?php echo htmlspecialchars($v['id']); ?>">
+                                    <input type="text" name="reply2" placeholder="在此输入回复">
+                                    <input type="submit" value="回复">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($v['id']); ?>" />
+                                </form>
+                            </span>
+                        </div>
+                    </ul>
+                    <?php endif; ?>
+                </li>
+                <?php endif; ?> <!-- 结束is_private检查 -->
+                <?php endforeach; ?>
+            </ul>
+            <div class="comments_footer">
+                <?php echo $pageList; ?>
+            </div>
+        </div>
+    </body>
+    <script>
+        function fun1(link) {
+            var sortSpan = link.parentNode.querySelector('.relpy');
+            if (sortSpan.style.display === 'none') {
+                sortSpan.style.display = 'block'; // 显示表单  
+            } else {
+                sortSpan.style.display = 'none'; // 隐藏表单  
+            }
+        }
+    </script>
+</html>

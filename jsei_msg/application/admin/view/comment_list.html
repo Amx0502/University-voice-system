@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>留言列表</title>
+        <link rel="stylesheet" href="./public/css/admin.css" />
+    </head>
+    <body>
+        <div id="box">
+            <a href="index.php" style="float: right;">↩返回</a>
+            <h1>留言列表</h1>
+            <div id="info">
+                欢迎您:admin 
+                <a href="index.php?p=admin&c=admin&a=logout">退出登录</a>
+            </div>
+            <div id="comment">
+                <?php foreach($data as $v):?>
+                <ul class="list">
+                    <li>
+                        <?php if ($v['is_private'] == 1): ?>
+                        <span>🔒</span>
+                        <?php endif; ?>
+                        作者: <?php echo $v['poster']; ?>
+                        邮箱: <?php echo $v['mail']; ?>
+                        IP: <?php echo $v['ip']; ?>
+                        <span class="right">
+                            <a href="index.php?p=admin&c=comment&a=reply&id=<?php echo $v['id'];?>">回复/修改</a>
+                            <a href="index.php?p=admin&c=comment&a=delete&id=<?php echo $v['id'];?>">删除</a>
+                        </span>
+                    </li>
+                    <li><?php echo $v['comment']; ?></li>
+                    <li>
+                        <span class="right">发表时间: <?php echo $v['date']; ?></span><br />
+                        <span class="right">被举报：<?php echo $v['report']; ?></span>
+                        管理员回复: <br><?php echo $v['reply']; ?>
+                        
+                    </li>
+                </ul>
+                <?php endforeach;?>
+            </div>
+            <div id="footer">
+                <?php echo $pageList; ?>
+            </div>
+        </div>
+    </body>
+</html>

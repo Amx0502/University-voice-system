@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>留言修改</title>
+        <link rel="stylesheet" href="./public/css/admin.css" />
+    </head>
+    <body>
+        <div id="box">
+            <a href="index.php?p=admin" style="float: right;">↩返回</a>
+            <h1>留言修改</h1>
+            <div id="comment">
+                <form method="post" action="index.php?p=admin&c=comment&a=update">
+                    <ul class="reply">
+                        <li>用户: <input name="poster" type="text" class="input" value="<?php echo $data['poster']; ?>" />
+                        </li>
+                        <li>邮箱: <input name="mail" type="text" class="input" value="<?php echo $data['mail']; ?>" />
+                        </li>
+                        <li class="top">留言:
+                            <textarea name="comment"><?php echo $data['comment']; ?></textarea>
+                        </li>
+                        <li class="top">回复:
+                            <textarea name="reply"><?php echo $data['reply']; ?></textarea>
+                        </li>
+                        <li class="center">
+                            <input type="reset" value="重置" class="button" />
+                            <input type="submit" value="保存" class="button" />
+                        </li>
+                    </ul>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

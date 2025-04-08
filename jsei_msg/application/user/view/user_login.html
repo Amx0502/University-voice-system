@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>用户登录</title>
+        <link rel="stylesheet" type="text/css" href="./public/css/admin.css" charset="utf-8">
+    </head>
+    <style></style>
+    <body>
+        <div id="box">
+            <a href="index.php?p=admin&c=admin&a=login" style="float: right;">管理员登录↗</a>
+            <h1>用户登录</h1>
+            <div id="loginbox">
+                <a href="index.php?p=user&c=user&a=register" class="button" id="button">注册用户</a>
+                <form method="post" action="">
+                    <div class="form">
+                        用户名:<input name="username" type="text" class="input" />
+                        密码:<input name="password" type="password" class="input" /><br>
+                        <input type="submit" value="登 录" class="button" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

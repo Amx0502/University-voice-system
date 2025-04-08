@@ -1,0 +1,143 @@
+body,
+h1,
+textarea,
+input,
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background: #eaedee;
+    text-align: center;
+    font-size: 13px;
+   background: url(../img/back.jpg);
+    background-size: 100% 184.5%;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+h1 {
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+    margin-left: 5px;
+}
+
+a:hover {
+    color: #f4ffe8;
+    background: #d5ddce;
+    border-radius: 3px;
+    padding: 0 4px;
+    margin: 0 2px;
+    line-height: 20px;
+}
+
+.button {
+    width: 45px;
+    height: 22px;
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+#box {
+    color: #666;
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px 5% 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+#loginbox .input {
+    width: 120px;
+    height: 18px;
+    margin: 10px;
+}
+
+#loginbox1 .input {
+    width: 120px;
+    height: 18px;
+    text-align: center;
+    margin: 10px;
+}
+
+#info {
+    margin-bottom: 10px;
+}
+
+#comment .list {
+    text-align: left;
+    margin-bottom: 15px;
+    border: 1px dotted #999;
+    border-bottom: 0;
+}
+
+#comment .list li {
+    padding: 10px;
+    border-bottom: 1px dotted #999;
+}
+
+#comment .right {
+    float: right;
+}
+
+#comment .reply {
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#comment .reply li {
+    padding: 10px;
+}
+
+#comment .reply .top {
+    vertical-align: top;
+}
+
+#comment .reply textarea {
+    width: 80%;
+    height: 50px;
+}
+
+#comment .reply .input {
+    width: 150px;
+}
+
+#footer {
+    height: 35px;
+    line-height: 35px;
+}
+
+#footer a {
+    border: 1px solid #fff;
+    text-decoration: none;
+    color: #999;
+    padding: 2px 4px;
+    margin: 0 2px;
+    line-height: 20px;
+}
+
+#footer a:hover {
+    border: 1px solid #999;
+    background: #f0f0f0;
+}
+
+#footer .curr {
+    border: 1px solid #999;
+    background: #f0f0f0;
+}
